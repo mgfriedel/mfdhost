@@ -1,0 +1,20 @@
+{
+    "name": "mfdhost",
+    "category": "guest",
+    "description": "Alpine based container with LLDP and basic network tools",
+    "vendor_name": "Mike Friedel",
+    "vendor_url": "https://github.com/mgfriedel",
+    "documentation_url": "https://github.com/mgfriedel/mfdhost/blob/main/README.md",
+    "product_name": "mfdhost",
+    "product_url": "https://github.com/mgfriedel/mfdhost",
+    "registry_version": 4,
+    "status": "experimental",
+    "maintainer": "Mike Friedel",
+    "maintainer_email": "mfriedel@gmail.com",
+    "symbol": ":/symbols/docker_guest.svg",
+    "docker": {
+        "adapters": 1,
+        "image": "mgfriedel/mfdhost:latest",
+        "console_type": "telnet"
+    }
+}
