@@ -1,5 +1,5 @@
 # mfdhost
-Alpine based LLDP host with basic network tools
+Alpine based container with LLDP and basic network tools
 
 ## Packages
 - bash
