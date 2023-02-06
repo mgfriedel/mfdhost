@@ -2,6 +2,7 @@ FROM alpine
 
 RUN apk add --no-cache bash busybox curl iftop iperf iperf3 iptraf-ng jq open-lldp screen tcpdump wget
 COPY entrypoint.sh /
+COPY iperf-wrapper.sh /
 
 ### Defaults ###
 #ENV LLDP_SERVER=1

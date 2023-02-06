@@ -30,11 +30,13 @@ if [ -z "$LLDP_SERVER" ] || [ ! "$LLDP_SERVER" == "0" ]; then
 fi
 
 if [ -z "$IPERF_SERVER" ] || [ ! "$IPERF_SERVER" == "no" ]; then
-    echo "Starting iperf server"
-    echo "screen -t \"iperf3-server\" /usr/bin/iperf3 -s" >> $SCREENRC
+    echo "screen -t \"iperf-server\" /iperf-wrapper.sh server" >> $SCREENRC
+    #echo "Starting iperf server"
+    #echo "screen -t \"iperf3-server\" /usr/bin/iperf3 -s" >> $SCREENRC
 fi
 
 [ -z "$IPERF_RATE" ] && export IPERF_RATE="1M"
+[ -z "$IPERF_RETRY_DELAY" ] && export IPERF_RETRY_DELAY="10"
 
 [ -z "$IPERF_MSS" ] && export IPERF_MSS="1300"
 if [ "$IPERF_MSS" == "yes" ]; then
@@ -49,8 +51,10 @@ fi
 echo "screen -t shell bash" >> $SCREENRC
 
 if [ "$IPERF_SRVIP" ]; then
-    echo "Starting iperf client"
-    echo "screen -t \"iperf-client\" /usr/bin/iperf3 -c $IPERF_SRVIP -t 0 -b $IPERF_RATE$IPERF_OPTIONS" >> $SCREENRC
+    echo "screen -t \"iperf-client\" /iperf-wrapper.sh client" >> $SCREENRC
+    #echo "Starting iperf client"
+    #echo "screen -t \"iperf-client\" bash while [[ 1 ]]; do /usr/bin/iperf3 -c $IPERF_SRVIP -t 0 -b $IPERF_RATE$IPERF_OPTIONS; sleep $IPERF_RETRY_DELAY; done" >> $SCREENRC
+    #echo "screen -t \"iperf-client\" /usr/bin/iperf3 -c $IPERF_SRVIP -t 0 -b $IPERF_RATE$IPERF_OPTIONS" >> $SCREENRC
 fi
 
 screen -c $SCREENRC
